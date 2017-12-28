@@ -1,9 +1,9 @@
 {
   "name": "vue-wasm",
+  "main": "src/wasm.js",
   "version": "1.0.0",
   "description": "Vue web assembly loader",
   "author": "Brock <brock.reece@croud.co.uk>",
-  "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",

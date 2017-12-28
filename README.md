@@ -32,9 +32,9 @@ Simply import the `vue-wasm` plugin and your Web Assembly modules and then insta
 
 ```js
 import VueWasm from 'vue-wasm';
-import addModule from './assets/wasm/add.wasm';
+import arithmeticModule from './assets/wasm/arithmetic.wasm';
 
-VueWasm(Vue, { modules: { add: addModule } });
+VueWasm(Vue, { modules: { arithmetic: arithmeticModule } });
 ```
 ### Await load
 If you need to use your Web Assembly functions in the mounted or created lifecycle hooks, you will need to use a little hack to wait for the plugin to load before initialising your Vue app.
@@ -42,10 +42,10 @@ If you need to use your Web Assembly functions in the mounted or created lifecyc
 ```js
 //main.js
 import VueWasm from 'vue-wasm';
-import add from './assets/wasm/add.wasm';
+import arithmetic from './assets/wasm/arithmetic.wasm';
 
 const init = async () => {
-  await VueWasm(Vue, { modules: { add } });
+  await VueWasm(Vue, { modules: { arithmetic: arithmeticModule } });
   /* eslint-disable no-new */
   new Vue({
     el: '#app',
@@ -63,7 +63,7 @@ This will add a `$wasm` object to all of your Vue components. *Note that your fu
 ```js
 // App.vue
 mounted() {
-  console.log(this.$wasm.add.addOne(2)) // 3
+  console.log(this.$wasm.arithmetic.add(1, 2)) // 3
 },
 ```
 
